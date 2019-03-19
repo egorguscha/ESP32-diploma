@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Конфигурация системы</title>
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <header>
+      <span class="page-title">Конфигурация системы</span>
+    </header>
+    <section class="main-content">
+      <div class="button-wrapper">
+        <a href="/" class="button-config">Состояние системы</a>
+      </div>
+      <ul class="params-list">
+        <li>
+          <span
+            class="params-item__title dropdown-handler dropdown-handler-custom"
+          >
+            <span>Настройки давления подающей плиты</span>
+            <span class="arrow">></span>
+          </span>
+          <div class="">
+            <div class="params-value-wrapper params-value-wrapper_config">
+              <span class="params-item__label params-item__label_config"
+                >Подъем</span
+              >
+              <div class="field-wrapper">
+                <input type="text" />
+                <span class="params-item__unit">атм</span>
+              </div>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_config">
+              <span class="params-item__label params-item__label_config"
+                >Опускание</span
+              >
+              <div class="field-wrapper">
+                <input type="text" />
+                <span class="params-item__unit">атм</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span
+            class="params-item__title dropdown-handler dropdown-handler-custom"
+          >
+            <span>Настройки давления пресующей плиты</span>
+            <span class="arrow">></span>
+          </span>
+          <div class="">
+            <div class="params-value-wrapper params-value-wrapper_config">
+              <span class="params-item__label params-item__label_config"
+                >Подъем</span
+              >
+              <div class="field-wrapper">
+                <input type="text" />
+                <span class="params-item__unit">атм</span>
+              </div>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_config">
+              <span class="params-item__label params-item__label_config"
+                >Опускание</span
+              >
+              <div class="field-wrapper">
+                <input type="text" />
+                <span class="params-item__unit">атм</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span
+            class="params-item__title dropdown-handler dropdown-handler-custom"
+          >
+            <span>Максимальное давление</span>
+          </span>
+          <div class="field-wrapper">
+            <input type="text" />
+            <span class="params-item__unit">атм</span>
+          </div>
+        </li>
+        <li>
+          <span
+            class="params-item__title dropdown-handler dropdown-handler-custom"
+          >
+            <span>Минимальное давление</span>
+          </span>
+          <div class="field-wrapper">
+            <input type="text" />
+            <span class="params-item__unit">атм</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <script src="/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Текущее состояние системы</title>
+    <!-- <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/main.css" /> -->
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <header>
+      <span class="page-title">Текущее состояние системы</span>
+    </header>
+    <section class="main-content">
+      <div class="button-wrapper">
+        <a href="/config.html" class="button-config">Настроить конфигурацию</a>
+      </div>
+      <ul class="params-list">
+        <li>
+          <span class="params-item__title">Давление в гидросистеме:</span>
+          <div class="params-value-wrapper">
+            <span class="params-item__value wrong">50</span>
+            <span class="params-item__unit">атм</span>
+          </div>
+        </li>
+        <li>
+          <span class="params-item__title">Частота вращения двигателя:</span>
+          <div class="params-value-wrapper">
+            <span class="params-item__value">4000</span>
+            <span class="params-item__unit">об/мин</span>
+          </div>
+        </li>
+        <li>
+          <span class="params-item__title">Состояние клапана:</span>
+          <div class="params-value-wrapper">
+            <span class="device-state">OFF</span>
+          </div>
+        </li>
+        <li>
+          <span
+            class="params-item__title dropdown-handler dropdown-handler-custom"
+          >
+            <span>Состояние датчиков</span>
+            <span class="arrow">></span>
+          </span>
+          <div class="dropdown-params">
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_state">
+              <span class="params-item__label">Датчик 1</span>
+              <span class="device-state">OFF</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <a href="/blink" class="test-button">BLINK</a>
+    <a href="/blinkoff" class="test-button red">BLINK OFF</a>
+
+    <script src="/index.js"></script>
+  </body>
+</html>
