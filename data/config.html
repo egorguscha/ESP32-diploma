@@ -7,6 +7,8 @@
     <title>Конфигурация системы</title>
     <link rel="stylesheet" href="/normalize.css" />
     <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
     <header>
@@ -24,12 +26,12 @@
             <span>Настройки давления подающей плиты</span>
             <span class="arrow">></span>
           </span>
-          <div class="">
+          <div class="dropdown-params">
             <div class="params-value-wrapper params-value-wrapper_config">
               <span class="params-item__label params-item__label_config"
                 >Подъем</span
               >
-              <div class="field-wrapper">
+              <div class="field-wrapper ">
                 <input type="text" />
                 <span class="params-item__unit">атм</span>
               </div>
@@ -38,7 +40,7 @@
               <span class="params-item__label params-item__label_config"
                 >Опускание</span
               >
-              <div class="field-wrapper">
+              <div class="field-wrapper ">
                 <input type="text" />
                 <span class="params-item__unit">атм</span>
               </div>
@@ -52,7 +54,7 @@
             <span>Настройки давления пресующей плиты</span>
             <span class="arrow">></span>
           </span>
-          <div class="">
+          <div class="dropdown-params dropdown-params-2">
             <div class="params-value-wrapper params-value-wrapper_config">
               <span class="params-item__label params-item__label_config"
                 >Подъем</span
@@ -77,26 +79,55 @@
           <span
             class="params-item__title dropdown-handler dropdown-handler-custom"
           >
-            <span>Максимальное давление</span>
+            <span>Демка</span>
+            <span class="arrow">></span>
           </span>
-          <div class="field-wrapper">
-            <input type="text" />
-            <span class="params-item__unit">атм</span>
-          </div>
-        </li>
-        <li>
-          <span
-            class="params-item__title dropdown-handler dropdown-handler-custom"
-          >
-            <span>Минимальное давление</span>
-          </span>
-          <div class="field-wrapper">
-            <input type="text" />
-            <span class="params-item__unit">атм</span>
+          <div class="dropdown-params dropdown-params">
+            <div class="params-value-wrapper params-value-wrapper_config">
+              <span class="params-item__label params-item__label_config"
+                >Диод</span
+              >
+              <div class="field-wrapper">
+                <a
+                  href="javascript:void(0);"
+                  class="primary-button"
+                  data-command="allowblink"
+                  >allow blink</a
+                >
+                <a
+                  href="javascript:void(0);"
+                  class="primary-button"
+                  data-command="on"
+                  >ON</a
+                >
+                <a
+                  href="javascript:void(0);"
+                  class="primary-button"
+                  data-command="off"
+                  >OFF</a
+                >
+              </div>
+            </div>
+            <div class="params-value-wrapper params-value-wrapper_config">
+              <span class="params-item__label params-item__label_config"
+                >Частота мерцания, Гц</span
+              >
+              <div class="field-wrapper">
+                <input
+                  value="1000"
+                  type="range"
+                  id="range-freq"
+                  min="1000"
+                  max="5000"
+                  step="1000"
+                />
+              </div>
+            </div>
           </div>
         </li>
       </ul>
     </section>
     <script src="/index.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>

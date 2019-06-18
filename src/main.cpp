@@ -4,55 +4,70 @@
 #include <FS.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
+#include <HardwareSerial.h>
 
+//16 17
+
+const int ledPin = 15;
+long interval = 1000;
+int allowBlink = 0;
+int ledState = LOW;
+
+unsigned long previousMillis = 0;
+unsigned long currentMillis = 0;
 
 const char *ssid = "ESP32AP";
 const char *password = "11111111";
 
-const int ledPin = 26;
-String ledState;
-
-
 AsyncWebServer server(80);
-String processor(const String& var){
-  if(var == "STATE"){
-    if(digitalRead(ledPin)){
-      ledState = "active";
+AsyncWebSocket ws("/");
 
+AsyncWebSocketClient * globalClient = NULL;
+
+void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len){
+
+
+
+  if(type == WS_EVT_CONNECT){
+    Serial.println("Websocket client connection received");
+    globalClient = client;
+  } else if(type == WS_EVT_DISCONNECT){
+    Serial.println("Websocket client connection finished");
+    globalClient = NULL;
+  } else if(type == WS_EVT_DATA) {
+    String msg = "";
+    for(int i=0; i < len; i++) {
+      msg += (char) data[i];
     }
-    else{
-      ledState = "";
 
-    }
-    // Serial.print(ledState);
+    Serial.println("message:");
+    Serial.println(atoi(msg.c_str()));
+    Serial.println(msg);
 
-    return ledState;
-  }
-  return String();
-}
-
-void diod_blink(int count){
-
-    int i = 0;
-
-    if(1){
+    if(msg == "on"){
+      digitalWrite(ledPin, HIGH);
+    }else if(msg == "off"){
       digitalWrite(ledPin, LOW);
-    }else{
-      while(i < count){
-        digitalWrite(ledPin, HIGH);
-        delay(20);
-        digitalWrite(ledPin, LOW);
-        delay(20);
-        i++;
-      }
+      allowBlink = 0;
+    }else if(atoi(msg.c_str())){
+      interval = atoi(msg.c_str());
+
+      Serial.println(interval);
+    }else if(msg == "allowblink"){
+      allowBlink = 1;
     }
 
 
+
+
+    Serial.println();
+  }
 }
 
 
 void setup(){
-  Serial.begin(115200);
+  Serial.begin(115200,SERIAL_8N1);
+
   pinMode(ledPin, OUTPUT);
 
   if(!SPIFFS.begin()){
@@ -60,11 +75,18 @@ void setup(){
      return;
   }
 
-  WiFi.softAP(ssid, password);
+ WiFi.softAP(ssid, password);
 
   Serial.println();
   Serial.print("IP address: ");
   Serial.println(WiFi.softAPIP());
+
+
+
+  ws.onEvent(onWsEvent);
+  server.addHandler(&ws);
+
+
 
   server.on("/normalize.css", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/css/normalize.css", "text/css");
@@ -82,31 +104,31 @@ void setup(){
     request->send(SPIFFS, "/config.html", "text/html", false  );
 
   });
-  server.on("/on", HTTP_GET, [](AsyncWebServerRequest *request){
-    digitalWrite(ledPin, HIGH);
-    request->send(SPIFFS, "/index.html", String(),false, processor);
-  });
-  server.on("/off", HTTP_GET, [](AsyncWebServerRequest *request){
-    digitalWrite(ledPin, LOW);
-    request->send(SPIFFS, "/index.html",  String(),false, processor);
-  });
-  server.on("/blink", HTTP_GET, [](AsyncWebServerRequest *request){
-    diod_blink(400);
-    request->send(SPIFFS, "/index.html", String(),false);
-  });
-  server.on("/blinkoff", HTTP_GET, [](AsyncWebServerRequest *request){
-    diod_blink(800);
-    request->send(SPIFFS, "/index.html", String(),false);
-  });
-
-
-
 
   server.begin();
 }
 
 void loop(){
+    if(allowBlink){
+   currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+
+    if (ledState == LOW) {
+      ledState = HIGH;
+    } else {
+      ledState = LOW;
+    }
+    digitalWrite(ledPin, ledState);
+  }
+    }
 
 }
+
+
+
+
 
 

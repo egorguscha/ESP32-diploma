@@ -1,4 +1,4 @@
-.test-button {
+.primary-button {
   width: 200px;
   height: 50px;
   text-align: center;
@@ -9,8 +9,18 @@
   border: none;
   display: block;
   text-decoration: none;
+  transition: 0.2s;
 }
-.test-button.red {
+.primary-button:hover {
+  cursor: pointer;
+}
+.primary-button:active {
+  background: #137434;
+}
+.primary-button:focus {
+  outline: none;
+}
+.primary-button.red {
   background: red;
 }
 .diod-state {
@@ -98,7 +108,7 @@ ul {
 .dropdown-handler-custom .arrow {
   transition: 0.3s;
 }
-.dropdown-handler-custom.active .arrow {
+.params-list li.active .arrow {
   transform: rotate(90deg);
 }
 .dropdown-params {
